@@ -1,0 +1,26 @@
+.category.active {
+    flex-grow: 4;
+    transition: 0.5s;
+}
+
+.category{
+    flex-shrink: 4;
+    transition: 0.5s;
+}
+
+.category .tasks-list{
+    display: none!important;
+}
+
+.category.active .tasks-list{
+    display: flex!important;
+}
+
+.btn-add{
+    
+}
+
+.task:hover{
+    transform:scale(1.05);
+    transition:0.3s;
+}
