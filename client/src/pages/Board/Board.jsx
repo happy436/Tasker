@@ -5,6 +5,7 @@ import { useTask } from "../../hook/useTask";
 import "./Board.css";
 import Category from "./components/Category";
 import TaskModal from "./components/TaskModal";
+import { CloseButton } from "react-bootstrap";
 
 function Board() {
     const { onActiveModal } = useTask();

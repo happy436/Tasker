@@ -4,7 +4,7 @@ import Paragraph from "./Paragraph";
 
 function Task({ data, activeRemoveModal, handleActiveEditModal }) {
     return (
-        <div className="flex-shrink-1 rounded-3 card-body alert-primary task">
+        <div className="flex-shrink-1 rounded-3 card-body alert alert-primary task">
             <div className="d-flex justify-content-between">
                 <h4 role="button" onClick={() => handleActiveEditModal(data, "edit")}>
                     {data.title}
