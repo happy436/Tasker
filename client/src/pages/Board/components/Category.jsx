@@ -1,28 +1,19 @@
-import React, { useState } from "react";
-import Modal from "../../../components/ui/common/Modal";
+import React from "react";
 import { useTask } from "../../../hook/useTask";
-import EditTaskModal from "./EditTaskModal";
+import EditTaskModal from "./modals/EditTaskModal";
 import Task from "./Task";
+import ConfirmRemoveTaskModal from "./modals/ConfirmRemoveTaskModal";
 
 function Category() {
     const {
         filteredTasksByCategories,
         handleChangeActiveCategory,
         activeCategoryIndex,
-        onDeleteTask,
-        onActiveModal
+        onActiveModal,
+        handleShowConfirmRemoveTaskModal,
+        activeEditModalTask
     } = useTask();
-    const [activeConfirmModal, setConfirmModal] = useState(false);
-    const [confirmTaskID, setConfirmTaskID] = useState()
-    const handleShowConfirmModal = (data) => {
-        setConfirmModal(!activeConfirmModal);
-        setConfirmTaskID(data)
-    };
-    const handleConfirmRemove = () => {
-        onDeleteTask(confirmTaskID)
-        setConfirmModal(!activeConfirmModal);
-        setConfirmTaskID()
-    }
+
     return (
         <>
             <div>
@@ -71,7 +62,7 @@ function Category() {
                                         handleActiveEditModal={onActiveModal}
                                         data={task}
                                         activeRemoveModal={
-                                            handleShowConfirmModal
+                                            handleShowConfirmRemoveTaskModal
                                         }
                                     />
                                 </li>
@@ -82,16 +73,8 @@ function Category() {
                     </ul>
                 </section>
             ) : null}
-            <Modal
-                active={activeConfirmModal}
-                title="Confirm remove?"
-                positiveTitleButton="Remove"
-                handleNegativeFunction={handleShowConfirmModal}
-                handlePositiveFunction={handleConfirmRemove}
-            >
-                <Modal.Body>Do you really want to remove this task?</Modal.Body>
-            </Modal>
-            <EditTaskModal/>
+            <ConfirmRemoveTaskModal/>
+            {activeEditModalTask && <EditTaskModal />}
         </>
     );
 }

@@ -54,6 +54,16 @@ const TaskProvider = ({ children }) => {
             taskList: [],
         },
     ];
+    const colorList = [
+        "primary",
+        "secondary",
+        "success",
+        "danger",
+        "warning",
+        "info",
+        "light",
+        "dark",
+    ];
 
     /* <--------------------------------Local State--------------------------------> */
 
@@ -76,7 +86,15 @@ const TaskProvider = ({ children }) => {
 
     const [activeEditModalTask, setActiveEditModalTask] = useState(false);
     const [editedTask, setEditedTask] = useState({});
-    const [criticalStatus, setCriticalStatus] = useState(false)
+    const [criticalStatus, setCriticalStatus] = useState(false);
+    const [colorEditTask, setColorEditTask] = useState();
+
+    /* <----------------MODAL for remove task----------------> */
+
+    const [activeConfirmRemoveTaskModal, setConfirmRemoveTaskModal] =
+        useState(false);
+
+    const [confirmTaskID, setConfirmTaskID] = useState();
     /* <--------------------------------FUNCTION--------------------------------> */
 
     /* <----------------MODAL for create task----------------> */
@@ -84,17 +102,21 @@ const TaskProvider = ({ children }) => {
     const onActiveModal = (data, type = "") => {
         const title = data ? data.title : "";
         const paragraphs = data ? data.paragraphs : [];
+        const color = data && data.color;
         data && setEditedTask(data);
 
         if (type === "edit") {
             setActiveEditModalTask(!activeEditModalTask);
-            data && data.critical ? setCriticalStatus(data.critical) : setCriticalStatus(false)
+            data && data.critical
+                ? setCriticalStatus(data.critical)
+                : setCriticalStatus(false);
         } else {
             setActiveModal(!activeModal);
         }
 
         setModalTitle(title);
         setModalParagraphs(paragraphs);
+        setColorEditTask(color);
     };
 
     /* изменение title in modal */
@@ -141,23 +163,46 @@ const TaskProvider = ({ children }) => {
 
     /* использует почти все функции модального окна для создание task */
 
+    const editColor = (color) => {
+        let activeColorIndex = colorList.findIndex((item) => item === color);
+        if(activeColorIndex >= colorList.length - 1){
+            activeColorIndex = 0
+        } else {
+            activeColorIndex++
+        }
+        setColorEditTask(colorList[activeColorIndex]);
+    };
+
     const editCriticalStatus = () => {
-        setCriticalStatus(!criticalStatus)
-    }
+        setCriticalStatus(!criticalStatus);
+    };
 
     const editTask = () => {
         const data = {
             taskID: editedTask.taskID, //неизменяемый
             title: modalTitle,
-            color: editedTask.color,
+            color: colorEditTask,
             paragraphs: modalParagraphs,
             createdAt: editedTask.createdAt, //неизменяемый
             user: editedTask.user, //неизменяемый
-            critical:criticalStatus
+            critical: criticalStatus,
         };
         dispatch(changeTask(data));
         onActiveModal(null, "edit");
-    }
+    };
+
+    /* <----------------MODAL for remove task----------------> */
+
+    const handleShowConfirmRemoveTaskModal = (data) => {
+        setConfirmRemoveTaskModal(!activeConfirmRemoveTaskModal);
+        setConfirmTaskID(data);
+    };
+
+    const handleConfirmRemoveTask = () => {
+        onDeleteTask(confirmTaskID);
+        setConfirmRemoveTaskModal(!activeConfirmRemoveTaskModal);
+        setConfirmTaskID();
+    };
 
     /* <----------------CATEGORY----------------> */
 
@@ -264,7 +309,12 @@ const TaskProvider = ({ children }) => {
                 activeEditModalTask,
                 editTask,
                 criticalStatus,
-                editCriticalStatus
+                editCriticalStatus,
+                activeConfirmRemoveTaskModal,
+                handleShowConfirmRemoveTaskModal,
+                handleConfirmRemoveTask,
+                colorEditTask,
+                editColor,
             }}
         >
             {children}

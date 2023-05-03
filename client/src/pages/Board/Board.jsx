@@ -4,11 +4,10 @@ import Search from "../../components/ui/search/Search";
 import { useTask } from "../../hook/useTask";
 import "./Board.css";
 import Category from "./components/Category";
-import TaskModal from "./components/TaskModal";
-import { CloseButton } from "react-bootstrap";
+import TaskModal from "./components/modals/TaskModal";
 
 function Board() {
-    const { onActiveModal } = useTask();
+    const { onActiveModal, filteredTasksByCategories } = useTask();
 
     return (
         <main className="container">
@@ -24,8 +23,8 @@ function Board() {
                     </button>
                 </div>
                 <div className="d-flex align-items-center gap-3">
-                    <Filter/>
-                    <Search/>
+                    <Filter />
+                    <Search />
                 </div>
             </div>
             <Category />

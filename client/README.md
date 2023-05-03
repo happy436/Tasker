@@ -39,8 +39,8 @@
        - [ ] can create task
        - [ ] can give a critical status for task
  - [x] Board
-   - [x] create task
-   - [x] delete task
+   - [x] ~~create task~~
+   - [x] ~~delete task~~
    - [ ] filter tasks
      - [ ] created date
      - [ ] title
@@ -48,13 +48,13 @@
    - [ ] search task
      - [ ] title
      - [ ] paragraph
-   - [x] edit task
-     - [x] add paragraph
-     - [x] edit title
-     - [x] edit each paragraph
-     - [x] delete paragraph
-     - [ ] give critical status
-     - [ ] edit color
+   - [x] ~~edit task~~
+     - [x] ~~add paragraph~~
+     - [x] ~~edit title~~
+     - [x] ~~edit each paragraph~~
+     - [x] ~~delete paragraph~~
+     - [x] ~~give critical status~~
+     - [x] ~~edit color~~
  - [ ] Settings (profile settings)
    - [ ] Language
    - [ ] Theme (black/white)

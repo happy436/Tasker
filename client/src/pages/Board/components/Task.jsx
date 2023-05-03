@@ -1,34 +1,23 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Paragraph from "./Paragraph";
+import CloseButton from "react-bootstrap/CloseButton";
+import Alert from "react-bootstrap/Alert";
+import ParagraphsList from "./ParagraphList";
 
 function Task({ data, activeRemoveModal, handleActiveEditModal }) {
     return (
-        <div className="flex-shrink-1 rounded-3 card-body alert alert-primary task">
+        <Alert variant={data.color}>
             <div className="d-flex justify-content-between">
-                <h4 role="button" onClick={() => handleActiveEditModal(data, "edit")}>
+                <h4
+                    role="button"
+                    onClick={() => handleActiveEditModal(data, "edit")}
+                >
                     {data.title}
                 </h4>
-                <button
-                    type="button"
-                    className="btn-close"
-                    data-bs-dismiss="modal"
-                    aria-label="Close"
-                    onClick={() => {
-                        activeRemoveModal(data.taskID);
-                    }}
-                ></button>
+                <CloseButton onClick={() => activeRemoveModal(data.taskID)} />
             </div>
-
-            <div className="list-group">
-                {data.paragraphs.map((item) => (
-                    <Paragraph
-                        key={item.id}
-                        data={{ ...item, taskID: data.taskID }}
-                    />
-                ))}
-            </div>
-        </div>
+            <ParagraphsList data={data}/>
+        </Alert>
     );
 }
 

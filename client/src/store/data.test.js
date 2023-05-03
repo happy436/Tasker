@@ -4,7 +4,7 @@ export const data = [
     {
         taskID: nanoid(),
         title: "Create Project",
-        color: "white",
+        color: "primary",
         paragraphs: [
             {
                 id: nanoid(),
@@ -18,7 +18,7 @@ export const data = [
     {
         taskID: nanoid(),
         title: "Finish Project",
-        color: "green",
+        color: "secondary",
         paragraphs: [
             {
                 id: nanoid(),
@@ -44,7 +44,7 @@ export const data = [
     {
         taskID: nanoid(),
         title: "Deploy Project",
-        color: "yellow",
+        color: "success",
         paragraphs: [
             {
                 id: nanoid(),
@@ -70,7 +70,7 @@ export const data = [
     {
         taskID: nanoid(),
         title: "Update Project",
-        color: "blue",
+        color: "danger",
         paragraphs: [
             {
                 id: nanoid(),
@@ -96,7 +96,7 @@ export const data = [
     {
         taskID: nanoid(),
         title: "Maintain Project",
-        color: "red",
+        color: "warning",
         paragraphs: [
             {
                 id: nanoid(),
@@ -122,7 +122,7 @@ export const data = [
     {
         taskID: nanoid(),
         title: "Document Project",
-        color: "purple",
+        color: "info",
         paragraphs: [
             {
                 id: nanoid(),
@@ -148,7 +148,7 @@ export const data = [
     {
         taskID: nanoid(),
         title: "Plan Next Release",
-        color: "orange",
+        color: "primary",
         paragraphs: [
             {
                 id: nanoid(),
@@ -174,7 +174,7 @@ export const data = [
     {
         taskID: nanoid(),
         title: "Meet with Team",
-        color: "gray",
+        color: "dark",
         paragraphs: [
             {
                 id: nanoid(),
@@ -200,7 +200,7 @@ export const data = [
     {
         taskID: nanoid(),
         title: "Review Code",
-        color: "green",
+        color: "secondary",
         paragraphs: [
             {
                 id: nanoid(),
@@ -226,7 +226,7 @@ export const data = [
     {
         taskID: nanoid(),
         title: "Write Tests",
-        color: "red",
+        color: "warning",
         paragraphs: [
             {
                 id: nanoid(),
@@ -252,7 +252,7 @@ export const data = [
     {
         taskID: nanoid(),
         title: "Fix Bugs",
-        color: "orange",
+        color: "info",
         paragraphs: [
             {
                 id: nanoid(),
@@ -278,7 +278,7 @@ export const data = [
     {
         taskID: nanoid(),
         title: "Refactor Code",
-        color: "purple",
+        color: "info",
         paragraphs: [
             {
                 id: nanoid(),
@@ -304,7 +304,7 @@ export const data = [
     {
         taskID: nanoid(),
         title: "Optimize Performance",
-        color: "blue",
+        color: "danger",
         paragraphs: [
             {
                 id: nanoid(),
@@ -330,7 +330,7 @@ export const data = [
     {
         taskID: nanoid(),
         title: "Deploy Application",
-        color: "teal",
+        color: "info",
         paragraphs: [
             {
                 id: nanoid(),
@@ -356,7 +356,7 @@ export const data = [
     {
         taskID: nanoid(),
         title: "Monitor Application",
-        color: "indigo",
+        color: "info",
         paragraphs: [
             {
                 id: nanoid(),
@@ -382,7 +382,7 @@ export const data = [
     {
         taskID: nanoid(),
         title: "Provide Support",
-        color: "pink",
+        color: "info",
         paragraphs: [
             {
                 id: nanoid(),
@@ -408,7 +408,7 @@ export const data = [
     {
         taskID: nanoid(),
         title: "Write Documentation",
-        color: "brown",
+        color: "info",
         paragraphs: [
             {
                 id: nanoid(),
@@ -434,7 +434,7 @@ export const data = [
     {
         taskID: nanoid(),
         title: "Conduct Code Review",
-        color: "cyan",
+        color: "info",
         paragraphs: [
             {
                 id: nanoid(),
@@ -460,7 +460,7 @@ export const data = [
     {
         taskID: nanoid(),
         title: "Perform Database Maintenance",
-        color: "lime",
+        color: "info",
         paragraphs: [
             {
                 id: nanoid(),
@@ -486,7 +486,7 @@ export const data = [
     {
         taskID: nanoid(),
         title: "Develop New Features",
-        color: "purple",
+        color: "info",
         paragraphs: [
             {
                 id: nanoid(),
@@ -512,7 +512,7 @@ export const data = [
     {
         taskID: nanoid(),
         title: "Create Marketing Materials",
-        color: "orange",
+        color: "info",
         paragraphs: [
             {
                 id: nanoid(),
@@ -538,7 +538,7 @@ export const data = [
     {
         taskID: nanoid(),
         title: "Develop Business Strategy",
-        color: "red",
+        color: "warning",
         paragraphs: [
             {
                 id: nanoid(),
@@ -564,7 +564,7 @@ export const data = [
     {
         taskID: nanoid(),
         title: "Manage Project Budget",
-        color: "green",
+        color: "secondary",
         paragraphs: [
             {
                 id: nanoid(),
@@ -590,7 +590,7 @@ export const data = [
     {
         taskID: nanoid(),
         title: "Recruit New Team Members",
-        color: "blue",
+        color: "danger",
         paragraphs: [
             {
                 id: nanoid(),
@@ -616,7 +616,7 @@ export const data = [
     {
         taskID: nanoid(),
         title: "Improve Customer Experience",
-        color: "yellow",
+        color: "success",
         paragraphs: [
             {
                 id: nanoid(),
