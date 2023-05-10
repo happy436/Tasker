@@ -87,7 +87,7 @@ const TaskProvider = ({ children }) => {
     const [activeEditModalTask, setActiveEditModalTask] = useState(false);
     const [editedTask, setEditedTask] = useState({});
     const [criticalStatus, setCriticalStatus] = useState(false);
-    const [colorEditTask, setColorEditTask] = useState();
+    const [colorEditTask, setColorEditTask] = useState("primary");
 
     /* <----------------MODAL for remove task----------------> */
 
@@ -102,7 +102,7 @@ const TaskProvider = ({ children }) => {
     const onActiveModal = (data, type = "") => {
         const title = data ? data.title : "";
         const paragraphs = data ? data.paragraphs : [];
-        const color = data && data.color;
+        const color = data && data.color || "primary";
         data && setEditedTask(data);
 
         if (type === "edit") {
@@ -163,7 +163,7 @@ const TaskProvider = ({ children }) => {
 
     /* использует почти все функции модального окна для создание task */
 
-    const editColor = (color) => {
+    const editColor = (color = "danger") => {
         let activeColorIndex = colorList.findIndex((item) => item === color);
         if(activeColorIndex >= colorList.length - 1){
             activeColorIndex = 0
@@ -272,7 +272,7 @@ const TaskProvider = ({ children }) => {
         const data = {
             taskID: nanoid(),
             title: modalTitle,
-            color: "",
+            color: colorEditTask,
             paragraphs: modalParagraphs,
             createdAt: Date.now(),
             user: "",
@@ -318,7 +318,6 @@ const TaskProvider = ({ children }) => {
             }}
         >
             {children}
-            {/* {isLoading && isLoggedIn ? <Loader /> : children} */}
         </TaskContext.Provider>
     );
 };

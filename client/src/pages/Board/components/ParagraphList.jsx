@@ -9,9 +9,9 @@ function ParagraphsList({ data }) {
         <ListGroup>
             {data.paragraphs.map((item) => (
                 <ListGroup.Item key={item.id}>
-                    <label style={{ cursor: "pointer" }}>
+                    <label className="pointer">
                         <input
-                            className="form-check-input me-1"
+                            className="form-check-input me-1 pointer"
                             type="checkbox"
                             value=""
                             style={{ cursor: "pointer" }}

@@ -23,10 +23,13 @@
 
 ### Pages plan
 
- - [ ] Profile
+ - [x] Profile
    - [ ] Profile data
- - [ ] Projects
-   - [ ] Projects data
+ - [x] Projects
+   - [x] Projects data
+   - [x] Projects list
+   - [ ] Create project
+ - [ ] Project
    - [ ] History for each project
      - [ ] Who create task
      - [ ] Who complete paragraph
@@ -38,6 +41,7 @@
        - [ ] can edit
        - [ ] can create task
        - [ ] can give a critical status for task
+   - [ ] Delete project
  - [x] Board
    - [x] ~~create task~~
    - [x] ~~delete task~~

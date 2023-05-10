@@ -22,7 +22,7 @@ function EditParagraphsList() {
                             <div className="input-group">
                                 <div className="input-group-text">
                                     <input
-                                        className="form-check-input mt-0"
+                                        className="form-check-input mt-0 pointer"
                                         type="checkbox"
                                         autoComplete="off"
                                         value=""

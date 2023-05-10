@@ -50,7 +50,7 @@ function EditTaskModal() {
                     >
                         {colorEditTask}
                     </button>
-                    <div className="mb-3">
+                    {/* <div className="mb-3">
                         <label
                             htmlFor="recipient-name"
                             className="col-form-label"
@@ -58,14 +58,14 @@ function EditTaskModal() {
                             Comment:
                         </label>
                         <input
-                            type="text"
+                            type="text" 
                             className="form-control"
                             id="recipient-name"
                             value={""}
                             autoComplete="off"
                             onChange={() => {}}
                         ></input>
-                    </div>
+                    </div> */}
                     <div
                         className="btn-group"
                         role="group"

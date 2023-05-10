@@ -10,6 +10,8 @@ function TaskModal() {
         onCreateTask,
         activeModal,
         onActiveModal,
+        colorEditTask,
+        editColor
     } = useTask();
 
     return (
@@ -35,6 +37,13 @@ function TaskModal() {
                         onChange={(e) => changeModalTitle(e)}
                     ></input>
                     <ParagraphsList />
+                    <button
+                        style={{ width: "200px", alignSelf: "center" }}
+                        className={`alert alert-${colorEditTask} text-center task`}
+                        onClick={() => editColor(colorEditTask)}
+                    >
+                        {colorEditTask}
+                    </button>
                 </div>
             </Modal.Body>
             <Modal.Footer>

@@ -2,16 +2,17 @@ import { createSlice } from "@reduxjs/toolkit";
 /* import notesService from "../services/notes.service" */
 /* import localStorageService from "../services/localStorage.service"
 import { toast } from "react-toastify" */
-import { data } from "./data.test";
+import { taskList } from "./data.test";
 
 const tasksSlice = createSlice({
     name: "tasks",
     initialState: {
-        entities: data,
+        entities: [],
         isLoading: true,
         error: null,
     },
     reducers: {
+        
         tasksRequested: (state) => {
             state.isLoading = true;
         },
@@ -60,6 +61,7 @@ const {
     tasksRequested,
     editCheckedStatusParagraphInTask,
     deleteTask,
+    tasksReceived,
     addTask,
     editTask /* ,
     tasksReceived,
@@ -137,8 +139,17 @@ export const removeNote = id => async dispatch => {
     }
 } */
 
-export const loadTasksList = () => async (dispatch) => {
+export const loadTasksList = (projectID) => async (dispatch) => {
     dispatch(tasksRequested());
+    try {
+        /* заменить в дальнейшем на сервисы */
+        const data = taskList.find(
+            (project) => projectID === project.projectID
+        ).taskList;
+        dispatch(tasksReceived(data));
+    } catch (error) {
+        console.log(error);
+    }
 };
 
 export const editCompleteStatusParagraph =
@@ -180,7 +191,7 @@ export const changeTask = (data) => async (dispatch) => {
     } catch (error) {
         console.log(error);
     }
-}
+};
 
 export const removeTask = (id) => async (dispatch) => {
     dispatch(tasksRequested());
