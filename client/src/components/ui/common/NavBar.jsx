@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getActiveProject } from "../../../store/projects";
-import history from "../../../utils/history";
+import { getActiveProject } from "store/projects";
+import history from "utils/history";
 
 function NavBar() {
     const userID = "a123";
@@ -43,7 +43,7 @@ function NavBar() {
     }
     return (
         <>
-            <nav className="p-2">
+            <nav className="p-2 flex-container">
                 <ul className="nav nav-pills">{renderItem()}</ul>
             </nav>
         </>

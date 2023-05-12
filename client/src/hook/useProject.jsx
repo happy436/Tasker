@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getProjectsLoadingStatus, loadProjects } from "../store/projects";
+import { getProjectsLoadingStatus, loadProjects } from "store/projects";
 
 const ProjectContext = React.createContext();
 

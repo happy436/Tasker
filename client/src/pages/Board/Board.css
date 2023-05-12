@@ -16,6 +16,24 @@
     display: flex!important;
 }
 
+.board-wrapper{
+    flex:auto;
+    display: flex;
+}
+
+.board-aside{
+    flex:1 1 auto;
+}
+
+.board{
+    flex:10 1 auto;
+}
+
+.board-taskList{
+    overflow-y: scroll;
+    /* height: 700px; */
+}
+
 .btn-add{
     
 }

@@ -40,7 +40,9 @@ function App() {
                             exact
                             component={Project}
                         />
+                        <Redirect to="/" />
                     </TaskProvider>
+                    <Redirect to="/" />
                 </ProjectProvider>
                 <Route path="/" exact component={Main} />
                 <Redirect to="/" />

@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { loadNotesList, getNotesLoadingStatus } from "../../../store/notes";
-import { getIsLoggedIn } from "../../../store/users";
+import { loadNotesList, getNotesLoadingStatus } from "store/notes";
+import { getIsLoggedIn } from "store/users";
 import Loader from "./../../common/icon/loader";
 
 function AppLoader({ children }) {

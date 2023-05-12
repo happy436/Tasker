@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
-import { useTask } from "../../../../hook/useTask";
+import { useTask } from "hook/useTask";
 import EditParagraphsList from "./EditParagraphsList";
 
 function EditTaskModal() {

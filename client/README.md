@@ -45,6 +45,7 @@
  - [x] Board
    - [x] ~~create task~~
    - [x] ~~delete task~~
+   - [ ] add marks
    - [ ] filter tasks
      - [ ] created date
      - [ ] title
@@ -59,6 +60,7 @@
      - [x] ~~delete paragraph~~
      - [x] ~~give critical status~~
      - [x] ~~edit color~~
+     - [ ] edit mark
  - [ ] Settings (profile settings)
    - [ ] Language
    - [ ] Theme (black/white)

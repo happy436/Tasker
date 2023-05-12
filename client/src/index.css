@@ -2,20 +2,44 @@
     border: solid 1px red;
 } */
 
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+    scrollbar-width: none;
+    scrollbar-color: #57beff #ffffff;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+    width: 16px;
+}
+
+*::-webkit-scrollbar-track {
+    background: #ffffff;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #57beff;
+    border-radius: 10px;
+    border: 3px solid #ffffff;
+}
+
 body {
     height: 100vh;
+    overflow: hidden;
 }
 
 #root {
+    display: flex;
+    flex-flow: column nowrap;
     height: 100%;
-    width: 100%;
 }
 
-main {
-    top: 0; /* устанавливаем отступ от верхнего края экрана */
-    left: 0; /* устанавливаем отступ от левого края экрана */
-    width: 100%; /* устанавливаем ширину элемента равной ширине экрана */
+nav{
+    flex: 0 0 auto;
 }
+
+
 
 /* Указываем box sizing */
 *,
@@ -24,7 +48,7 @@ main {
     box-sizing: border-box;
 }
 
-ul{
+ul {
     list-style-type: none;
 }
 
@@ -64,7 +88,7 @@ ol[class] {
 /* Элементы a, у которых нет класса, сбрасываем до дефолтных стилей */
 a:not([class]) {
     text-decoration-skip-ink: auto;
-    text-decoration:none;
+    text-decoration: none;
 }
 
 /* Упрощаем работу с изображениями */
@@ -86,8 +110,8 @@ select {
     font: inherit;
 }
 
-.pointer:hover{
-    cursor:pointer;
+.pointer:hover {
+    cursor: pointer;
 }
 
 /* Удаляем все анимации и переходы для людей, которые предпочитай их не использовать */

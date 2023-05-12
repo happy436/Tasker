@@ -8,7 +8,7 @@ import {
     getTasks,
     removeTask,
     changeTask,
-} from "../store/tasks";
+} from "store/tasks";
 /* import Loader from "../components/common/icon/loader"
 import { getIsLoggedIn } from "./../store/users" */
 

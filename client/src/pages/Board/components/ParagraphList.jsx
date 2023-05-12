@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { useTask } from "../../../hook/useTask";
+import { useTask } from "hook/useTask";
 import ListGroup from "react-bootstrap/ListGroup";
 
 function ParagraphsList({ data }) {

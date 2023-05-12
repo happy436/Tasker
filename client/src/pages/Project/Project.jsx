@@ -2,9 +2,9 @@ import React from "react";
 import { Button, ButtonGroup } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
-import CardContainer from "../../components/ui/common/CardContainer";
-import { getProjectByID } from "../../store/projects";
-import ProjectHistory from "../ProjectHistory";
+import CardContainer from "components/ui/common/CardContainer";
+import { getProjectByID } from "store/projects";
+import ProjectHistory from "pages/ProjectHistory";
 
 function Project() {
     const { projectID } = useParams();

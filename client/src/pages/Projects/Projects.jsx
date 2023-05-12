@@ -6,8 +6,9 @@ import {
     getProjects,
     getProjectsLoadingStatus,
     changeActiveProject,
-} from "../../store/projects";
-import history from "../../utils/history";
+} from "store/projects";
+import history from "utils/history";
+import ProjectModal from "./components/modals/ProjectModal";
 
 function Projects() {
     const dispatch = useDispatch();
@@ -15,16 +16,19 @@ function Projects() {
     const isLoading = useSelector(getProjectsLoadingStatus());
 
     const [activeProject, setActiveProject] = useState(null);
+    const [activeModal, setActiveModal] = useState(false);
 
     function fetchTaskList(projectID) {
         dispatch(changeActiveProject(projectID));
     }
 
     return (
-        <main className="d-flex flex-column p-3 gap-3">
+        <main className="d-flex flex-column p-3 gap-3 px-5">
             <h1>Projects</h1>
             <div>
-                <Button>Add project</Button>
+                <Button onClick={() => setActiveModal(true)}>
+                    Add project
+                </Button>
             </div>
             <ListGroup as="ul">
                 {projects.length !== 0 && !isLoading
@@ -56,6 +60,12 @@ function Projects() {
                       ))
                     : "Empty"}
             </ListGroup>
+            {activeModal && (
+                <ProjectModal
+                    active={activeModal}
+                    setActive={() => setActiveModal(!activeModal)}
+                />
+            )}
         </main>
     );
 }

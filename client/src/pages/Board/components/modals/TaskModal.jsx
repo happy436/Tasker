@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Modal } from "react-bootstrap";
-import { useTask } from "../../../../hook/useTask";
+import { useTask } from "hook/useTask";
 import ParagraphsList from "./EditParagraphsList";
 
 function TaskModal() {

@@ -1,6 +1,6 @@
 import React from "react";
 import { CloseButton, Button } from "react-bootstrap";
-import { useTask } from "../../../../hook/useTask";
+import { useTask } from "hook/useTask";
 
 function EditParagraphsList() {
     const {

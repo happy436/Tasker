@@ -1,5 +1,5 @@
 import React from "react";
-import { useTask } from "../../../hook/useTask";
+import { useTask } from "hook/useTask";
 import EditTaskModal from "./modals/EditTaskModal";
 import Task from "./Task";
 import ConfirmRemoveTaskModal from "./modals/ConfirmRemoveTaskModal";
@@ -50,7 +50,7 @@ function Category() {
                 </ul>
             </div>
             {filteredTasksByCategories.length !== 0 ? (
-                <section className="gap-3 tasks-list border border-top-0 border-light-subtle p-4">
+                <section className="gap-3 board-taskList tasks-list border border-top-0 border-light-subtle p-4">
                     <ul className="list-group d-flex flex-wrap gap-3 align-content-stretch justify-content-center flex-row">
                         {filteredTasksByCategories[activeCategoryIndex].taskList
                             .length !== 0 ? (
