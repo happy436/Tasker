@@ -20,8 +20,116 @@ export const projects = [
         history:[]
     },
     {
-        name: "Pizza app",
-        projectID: "awdlnawdawdadkjh12313",
+        name: "Task app",
+        projectID: "awdlnawdkjh12313",
+        team: ["qweadwadqwe"],
+        history:[]
+    },
+    {
+        name: "Task app",
+        projectID: "awdlnawdkjh12313",
+        team: ["qweadwadqwe"],
+        history:[]
+    },
+    {
+        name: "Task app",
+        projectID: "awdlnawdkjh12313",
+        team: ["qweadwadqwe"],
+        history:[]
+    },
+    {
+        name: "Task app",
+        projectID: "awdlnawdkjh12313",
+        team: ["qweadwadqwe"],
+        history:[]
+    },
+    {
+        name: "Task app",
+        projectID: "awdlnawdkjh12313",
+        team: ["qweadwadqwe"],
+        history:[]
+    },
+    {
+        name: "Task app",
+        projectID: "awdlnawdkjh12313",
+        team: ["qweadwadqwe"],
+        history:[]
+    },
+    {
+        name: "Task app",
+        projectID: "awdlnawdkjh12313",
+        team: ["qweadwadqwe"],
+        history:[]
+    },
+    {
+        name: "Task app",
+        projectID: "awdlnawdkjh12313",
+        team: ["qweadwadqwe"],
+        history:[]
+    },
+    {
+        name: "Task app",
+        projectID: "awdlnawdkjh12313",
+        team: ["qweadwadqwe"],
+        history:[]
+    },
+    {
+        name: "Task app",
+        projectID: "awdlnawdkjh12313",
+        team: ["qweadwadqwe"],
+        history:[]
+    },
+    {
+        name: "Task app",
+        projectID: "awdlnawdkjh12313",
+        team: ["qweadwadqwe"],
+        history:[]
+    },
+    {
+        name: "Task app",
+        projectID: "awdlnawdkjh12313",
+        team: ["qweadwadqwe"],
+        history:[]
+    },
+    {
+        name: "Task app",
+        projectID: "awdlnawdkjh12313",
+        team: ["qweadwadqwe"],
+        history:[]
+    },
+    {
+        name: "Task app",
+        projectID: "awdlnawdkjh12313",
+        team: ["qweadwadqwe"],
+        history:[]
+    },
+    {
+        name: "Task app",
+        projectID: "awdlnawdkjh12313",
+        team: ["qweadwadqwe"],
+        history:[]
+    },
+    {
+        name: "Task app",
+        projectID: "awdlnawdkjh12313",
+        team: ["qweadwadqwe"],
+        history:[]
+    },
+    {
+        name: "Task app",
+        projectID: "awdlnawdkjh12313",
+        team: ["qweadwadqwe"],
+        history:[]
+    },
+    {
+        name: "Task app",
+        projectID: "awdlnawdkjh12313",
+        team: ["qweadwadqwe"],
+        history:[]
+    },
+    {
+        name: "Task app",
+        projectID: "awdlnawdkjh12313",
         team: ["qweadwadqwe"],
         history:[]
     },

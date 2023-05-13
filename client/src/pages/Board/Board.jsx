@@ -20,7 +20,7 @@ function Board() {
     const { projectID } = useParams();
     const project = useSelector(getProjectByID(projectID));
     useEffect(() => {
-        dispatch(loadProjects());
+        /* dispatch(loadProjects()); */
         dispatch(loadTasksList(projectID));
         dispatch(changeActiveProject(projectID));
     }, []);
