@@ -8,6 +8,7 @@ import {
     getTasks,
     removeTask,
     changeTask,
+    getTasksLoadingStatus,
 } from "store/tasks";
 /* import Loader from "../components/common/icon/loader"
 import { getIsLoggedIn } from "./../store/users" */
@@ -20,6 +21,7 @@ export const useTask = () => {
 
 const TaskProvider = ({ children }) => {
     const dispatch = useDispatch();
+    const isLoading = useSelector(getTasksLoadingStatus());
     /* const isLoggedIn = useSelector(getIsLoggedIn())
     const isLoading = useSelector(getNotesLoadingStatus())
     const loadNotes = () => dispatch(loadNotesList())
@@ -102,7 +104,7 @@ const TaskProvider = ({ children }) => {
     const onActiveModal = (data, type = "") => {
         const title = data ? data.title : "";
         const paragraphs = data ? data.paragraphs : [];
-        const color = data && data.color || "primary";
+        const color = (data && data.color) || "primary";
         data && setEditedTask(data);
 
         if (type === "edit") {
@@ -138,18 +140,25 @@ const TaskProvider = ({ children }) => {
     };
 
     /* изменение checkbox параграфа */
-
     const onChangeModalCheckbox = (event, index) => {
-        const newParagraphs = [...modalParagraphs]; // create a new array with the same objects
-        newParagraphs[index].completed = event.target.checked; // update the description property of the object at the specified index
-        setModalParagraphs(newParagraphs); // set the state with the new array
+        const newParagraphs = modalParagraphs.map((paragraph, i) => {
+            if (i === index) {
+                return { ...paragraph, completed: event.target.checked };
+            }
+            return paragraph;
+        });
+        setModalParagraphs(newParagraphs);
     };
 
     /* изменение описания параграфа */
     const onChangeModalParagraphDescription = (event, index) => {
-        const newParagraphs = [...modalParagraphs]; // create a new array with the same objects
-        newParagraphs[index].description = event.target.value; // update the description property of the object at the specified index
-        setModalParagraphs(newParagraphs); // set the state with the new array
+        const newParagraphs = modalParagraphs.map((paragraph, i) => {
+            if (i === index) {
+                return { ...paragraph, description: event.target.value };
+            }
+            return paragraph;
+        });
+        setModalParagraphs(newParagraphs);
     };
 
     /* удаление параграфа из модального окна */
@@ -165,10 +174,10 @@ const TaskProvider = ({ children }) => {
 
     const editColor = (color = "danger") => {
         let activeColorIndex = colorList.findIndex((item) => item === color);
-        if(activeColorIndex >= colorList.length - 1){
-            activeColorIndex = 0
+        if (activeColorIndex >= colorList.length - 1) {
+            activeColorIndex = 0;
         } else {
-            activeColorIndex++
+            activeColorIndex++;
         }
         setColorEditTask(colorList[activeColorIndex]);
     };
@@ -177,7 +186,7 @@ const TaskProvider = ({ children }) => {
         setCriticalStatus(!criticalStatus);
     };
 
-    const editTask = () => {
+    const editTask = (projectID) => {
         const data = {
             taskID: editedTask.taskID, //неизменяемый
             title: modalTitle,
@@ -187,7 +196,7 @@ const TaskProvider = ({ children }) => {
             user: editedTask.user, //неизменяемый
             critical: criticalStatus,
         };
-        dispatch(changeTask(data));
+        dispatch(changeTask(data, projectID, editedTask.taskID));
         onActiveModal(null, "edit");
     };
 
@@ -198,8 +207,8 @@ const TaskProvider = ({ children }) => {
         setConfirmTaskID(data);
     };
 
-    const handleConfirmRemoveTask = () => {
-        onDeleteTask(confirmTaskID);
+    const handleConfirmRemoveTask = (projectID) => {
+        onDeleteTask(projectID, confirmTaskID);
         setConfirmRemoveTaskModal(!activeConfirmRemoveTaskModal);
         setConfirmTaskID();
     };
@@ -217,33 +226,34 @@ const TaskProvider = ({ children }) => {
     const taskList = useSelector(getTasks());
 
     /* фильтрация полученных tasks по категориям to do, critical, in progress, done */
-    taskList.forEach((item) => {
-        const completed = [];
-        item.paragraphs.forEach((paragraph) => {
-            completed.push(paragraph.completed);
+    !isLoading &&
+        taskList.forEach((item) => {
+            const completed = [];
+            item.paragraphs.forEach((paragraph) => {
+                completed.push(paragraph.completed);
+            });
+            if (completed.every((item) => item === true)) {
+                categoriesArray
+                    .find((item) => item.category === "Done")
+                    .taskList.push(item);
+            } else if (item.paragraphs.length === 0) {
+                categoriesArray
+                    .find((item) => item.category === "To do")
+                    .taskList.push(item);
+            } else if (item.critical) {
+                categoriesArray
+                    .find((item) => item.category === "Critical")
+                    .taskList.push(item);
+            } else if (completed.every((item) => item === false)) {
+                categoriesArray
+                    .find((item) => item.category === "To do")
+                    .taskList.push(item);
+            } else {
+                categoriesArray
+                    .find((item) => item.category === "In progress")
+                    .taskList.push(item);
+            }
         });
-        if (completed.every((item) => item === true)) {
-            categoriesArray
-                .find((item) => item.category === "Done")
-                .taskList.push(item);
-        } else if (item.paragraphs.length === 0) {
-            categoriesArray
-                .find((item) => item.category === "To do")
-                .taskList.push(item);
-        } else if (item.critical) {
-            categoriesArray
-                .find((item) => item.category === "Critical")
-                .taskList.push(item);
-        } else if (completed.every((item) => item === false)) {
-            categoriesArray
-                .find((item) => item.category === "To do")
-                .taskList.push(item);
-        } else {
-            categoriesArray
-                .find((item) => item.category === "In progress")
-                .taskList.push(item);
-        }
-    });
 
     /* сортировка по количеству параграфов */
     function sortParagraphsByCount(array) {
@@ -263,12 +273,12 @@ const TaskProvider = ({ children }) => {
 
     /* удаление task */
 
-    function onDeleteTask(id) {
-        dispatch(removeTask(id));
+    function onDeleteTask(projectID, taskID) {
+        dispatch(removeTask(projectID, taskID));
     }
 
     /* создание task */
-    function onCreateTask() {
+    function onCreateTask(projectID) {
         const data = {
             taskID: nanoid(),
             title: modalTitle,
@@ -277,15 +287,27 @@ const TaskProvider = ({ children }) => {
             createdAt: Date.now(),
             user: "",
         };
-        dispatch(createTask(data));
+        dispatch(createTask(data, projectID));
         onActiveModal();
     }
 
     /* <----------------PARAGRAPH----------------> */
 
     /* изменение статуса complete в paragraph */
-    const editCompleteStatus = (taskID, paragraphID) => {
-        dispatch(editCompleteStatusParagraph(taskID, paragraphID));
+    const editCompleteStatus = (projectID, task, paragraphID) => {
+        const updatedTask = {
+            ...task,
+            paragraphs: task.paragraphs.map((paragraph) => {
+                if (paragraph.id === paragraphID) {
+                    return {
+                        ...paragraph,
+                        completed: !paragraph.completed,
+                    };
+                }
+                return paragraph;
+            }),
+        };
+        dispatch(changeTask(updatedTask, projectID, task.taskID));
     };
 
     return (

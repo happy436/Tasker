@@ -2,9 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import { useTask } from "hook/useTask";
 import ListGroup from "react-bootstrap/ListGroup";
+import { useParams } from "react-router-dom";
 
 function ParagraphsList({ data }) {
     const { editCompleteStatus } = useTask();
+    const { projectID } = useParams();
     return (
         <ListGroup>
             {data.paragraphs.map((item) => (
@@ -17,7 +19,11 @@ function ParagraphsList({ data }) {
                             style={{ cursor: "pointer" }}
                             checked={item.completed}
                             onChange={() =>
-                                editCompleteStatus(data.taskID, item.id)
+                                editCompleteStatus(
+                                    projectID,
+                                    data,
+                                    item.id
+                                )
                             }
                         />
                         {item.completed ? (

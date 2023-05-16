@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import { useTask } from "hook/useTask";
 import EditParagraphsList from "./EditParagraphsList";
+import { useParams } from "react-router-dom";
 
 function EditTaskModal() {
     const {
@@ -13,8 +14,9 @@ function EditTaskModal() {
         editCriticalStatus,
         criticalStatus,
         colorEditTask,
-        editColor
+        editColor,
     } = useTask();
+    const { projectID } = useParams();
     return (
         <Modal
             aria-labelledby="contained-modal-title-vcenter"
@@ -97,7 +99,7 @@ function EditTaskModal() {
                 >
                     Close
                 </Button>
-                <Button variant="primary" onClick={() => editTask()}>
+                <Button variant="primary" onClick={() => editTask(projectID)}>
                     Edit task
                 </Button>
             </Modal.Footer>

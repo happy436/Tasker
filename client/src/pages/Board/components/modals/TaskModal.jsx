@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Modal } from "react-bootstrap";
 import { useTask } from "hook/useTask";
 import ParagraphsList from "./EditParagraphsList";
+import { useParams } from "react-router-dom";
 
 function TaskModal() {
     const {
@@ -11,8 +12,10 @@ function TaskModal() {
         activeModal,
         onActiveModal,
         colorEditTask,
-        editColor
+        editColor,
     } = useTask();
+
+    const { projectID } = useParams();
 
     return (
         <Modal
@@ -50,7 +53,10 @@ function TaskModal() {
                 <Button variant="secondary" onClick={() => onActiveModal()}>
                     Close
                 </Button>
-                <Button variant="primary" onClick={() => onCreateTask()}>
+                <Button
+                    variant="primary"
+                    onClick={() => onCreateTask(projectID)}
+                >
                     Add task
                 </Button>
             </Modal.Footer>

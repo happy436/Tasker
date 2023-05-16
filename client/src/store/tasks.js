@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
+import taskService from "services/tasks.service";
 /* import notesService from "../services/notes.service" */
 /* import localStorageService from "../services/localStorage.service"
 import { toast } from "react-toastify" */
-import { taskList } from "./data.test";
 
 const tasksSlice = createSlice({
     name: "tasks",
@@ -12,7 +12,6 @@ const tasksSlice = createSlice({
         error: null,
     },
     reducers: {
-        
         tasksRequested: (state) => {
             state.isLoading = true;
         },
@@ -142,30 +141,12 @@ export const removeNote = id => async dispatch => {
 export const loadTasksList = (projectID) => async (dispatch) => {
     dispatch(tasksRequested());
     try {
-        /* заменить в дальнейшем на сервисы */
-        const data = taskList.find(
-            (project) => projectID === project.projectID
-        ).taskList;
-        dispatch(tasksReceived(data));
+        const data = await taskService.getTasks(projectID);
+        dispatch(tasksReceived(data.taskList));
     } catch (error) {
         console.log(error);
     }
 };
-
-export const editCompleteStatusParagraph =
-    (taskID, paragraphID) => async (dispatch) => {
-        dispatch(tasksRequested());
-        try {
-            dispatch(
-                editCheckedStatusParagraphInTask({
-                    taskID,
-                    paragraphID,
-                })
-            );
-        } catch (error) {
-            console.log(error);
-        }
-    };
 
 export const getTasks = () => (state) => state.tasks.entities;
 export const getTasksLoadingStatus = () => (state) => state.tasks.isLoading;
@@ -175,28 +156,31 @@ export const getTaskById = (id) => (state) => {
     }
 };
 
-export const createTask = (data) => async (dispatch) => {
+export const createTask = (payload, projectID) => async (dispatch) => {
     dispatch(tasksRequested());
     try {
+        const data = await taskService.createTask(payload, projectID);
         dispatch(addTask(data));
     } catch (error) {
         console.log(error);
     }
 };
 
-export const changeTask = (data) => async (dispatch) => {
+export const changeTask = (data, projectID, taskID) => async (dispatch) => {
     dispatch(tasksRequested());
     try {
+        await taskService.update(data, projectID, taskID);
         dispatch(editTask(data));
     } catch (error) {
         console.log(error);
     }
 };
 
-export const removeTask = (id) => async (dispatch) => {
+export const removeTask = (projectID, taskID) => async (dispatch) => {
     dispatch(tasksRequested());
     try {
-        dispatch(deleteTask(id));
+        await taskService.delete(projectID, taskID)
+        dispatch(deleteTask(taskID));
     } catch (error) {
         console.log(error);
     }

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { projects } from "./data.test";
+import projectService from "services/project.service";
 
 const projectsSlice = createSlice({
 	name: "projects",
@@ -43,7 +43,7 @@ const {
 export const loadProjects = (userID) => async (dispatch) => {
 	dispatch(projectsRequested());
 	try {
-		const data = projects;
+		const data = await projectService.getProjects();
 		dispatch(projectsReceived(data));
 	} catch (error) {
 		console.log(error);

@@ -1,4 +1,4 @@
 {
-    "apiEndPoint": "",
+    "apiEndPoint": "http://***:8080/api/",
     "isFireBase": true
 }

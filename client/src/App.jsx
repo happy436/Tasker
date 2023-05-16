@@ -18,7 +18,6 @@ function App() {
         <>
             <NavBar />
             <Switch>
-                <Route path="/settings" component={Settings} />
                 <ProjectProvider>
                     <Route path="/profile/:userID?" component={Profile} />
                     <Route path="/projects" component={Projects} />
@@ -40,12 +39,11 @@ function App() {
                             exact
                             component={Project}
                         />
+                        <Route path="/" exact component={Main} />
                         <Redirect to="/" />
                     </TaskProvider>
-                    <Redirect to="/" />
                 </ProjectProvider>
-                <Route path="/" exact component={Main} />
-                <Redirect to="/" />
+                <Route path="/settings" component={Settings} />
             </Switch>
             <ToastContainer />
         </>

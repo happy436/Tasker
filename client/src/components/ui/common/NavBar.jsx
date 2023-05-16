@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, withRouter, useLocation  } from "react-router-dom";
 import { getActiveProject } from "store/projects";
-import history from "utils/history";
 
 function NavBar() {
     const userID = "a123";
@@ -14,16 +13,18 @@ function NavBar() {
         { name: "Settings", link: "/settings" },
     ];
     const [active, setActive] = useState();
+    const location = useLocation()
 
     useEffect(() => {
-        setActive(history.location.pathname);
-    }, [history.location.pathname]);
+        console.log(location.pathname)
+        setActive(location.pathname);
+    }, [location]);
 
     function renderItem() {
         return array.map((item, index) => {
             const component = (
                 <li className="nav-item" key={index}>
-                    <Link to={item.link} onClick={() => setActive(item.link)}>
+                    <Link to={item.link} /* onClick={() => setActive(item.link)} */>
                         <span
                             className={`nav-link ${
                                 item.link === active && "active"
@@ -50,4 +51,4 @@ function NavBar() {
     );
 }
 
-export default NavBar;
+export default withRouter(NavBar);

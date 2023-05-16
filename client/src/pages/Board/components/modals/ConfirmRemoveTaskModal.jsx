@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Modal } from "react-bootstrap";
 import { useTask } from "hook/useTask";
+import { useParams } from "react-router-dom";
 
 function ConfirmRemoveTaskModal() {
     const {
@@ -8,6 +9,7 @@ function ConfirmRemoveTaskModal() {
         handleShowConfirmRemoveTaskModal,
         handleConfirmRemoveTask,
     } = useTask();
+    const { projectID } = useParams();
     return (
         <Modal
             aria-labelledby="contained-modal-title-vcenter"
@@ -28,7 +30,7 @@ function ConfirmRemoveTaskModal() {
                 </Button>
                 <Button
                     variant="danger"
-                    onClick={() => handleConfirmRemoveTask()}
+                    onClick={() => handleConfirmRemoveTask(projectID)}
                 >
                     Remove
                 </Button>
