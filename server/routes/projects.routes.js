@@ -14,7 +14,6 @@ router
     /* auth, */ async (req, res) => {
         try {
             const data = await readJson(filePath);
-            console.log(data)
             res.send(data);
         } catch (error) {
             res.status(500).json({

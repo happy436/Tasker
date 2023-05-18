@@ -8,28 +8,33 @@ const filePath = "data/project.json";
 
 // const url = "http://localhost:8080/api/project/:projectID?"
 
+router.route("/").post(
+    /* auth, */ async (req, res) => {
+        const newProject = req.body;
+        try {
+            const data = await readJson(filePath);
+            data.push(newProject);
+            await writeJson(filePath, data);
+            res.status(201).send(newProject);
+        } catch (error) {
+            res.status(500).json({
+                message: "Error occurred on the server. Please try again later",
+            });
+        }
+    }
+);
+
 router
     .route("/:projectID?")
     .get(
         /* auth, */ async (req, res) => {
+            const { projectID } = req.params;
             try {
-                const { projectID } = req.params;
-                const data = [];
-                res.send(data);
-            } catch (error) {
-                res.status(500).json({
-                    message:
-                        "Error occurred on the server. Please try again later",
-                });
-            }
-        }
-    )
-    .post(
-        /* auth, */ async (req, res) => {
-            try {
-                const { projectID } = req.params;
-                const data = [];
-                res.status(201).send(data);
+                const data = await readJson(filePath);
+                const findedData = data.find(
+                    (project) => project.projectID === projectID
+                );
+                res.send(findedData);
             } catch (error) {
                 res.status(500).json({
                     message:
@@ -40,9 +45,17 @@ router
     )
     .patch(
         /* auth, */ async (req, res) => {
+            const { projectID } = req.params;
+            const newData = req.body;
             try {
-                const { projectID } = req.params;
-                const data = [];
+                const data = await readJson(filePath);
+                const updatedData = data.map((project) => {
+                    if (project.projectID === projectID) {
+                        return newData;
+                    }
+                    return project;
+                });
+                await writeJson(filePath, updatedData);
                 res.send(null);
             } catch (error) {
                 res.status(500).json({
@@ -54,9 +67,14 @@ router
     )
     .delete(
         /* auth, */ async (req, res) => {
+            const { projectID } = req.params;
             try {
-                const { projectID } = req.params;
-                const data = [];
+                const data = await readJson(filePath);
+                const findedIndex = data.findIndex(
+                    (project) => project.projectID === projectID
+                );
+                findedIndex && data.splice(findedIndex, 1);
+                await writeJson(filePath, data);
                 res.send(null);
             } catch (error) {
                 res.status(500).json({

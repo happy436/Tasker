@@ -77,21 +77,6 @@
     "projectID": "awdlnawdkqweqwejh12313",
     "taskList": [
       {
-        "taskID": "LHWdop2bSOsIyISVrnmFp",
-        "title": "first task",
-        "color": "primary",
-        "paragraphs": [
-          {
-            "id": "P1rqtwnLYMEDsimHiSbRy",
-            "description": "hello",
-            "completed": false,
-            "user": ""
-          }
-        ],
-        "createdAt": 1684145478239,
-        "user": ""
-      },
-      {
         "taskID": "_KCuNcAy8x1MfaCfGO0Uh",
         "title": "1",
         "color": "danger",
