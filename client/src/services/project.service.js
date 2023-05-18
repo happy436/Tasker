@@ -13,10 +13,17 @@ const projectService = {
         
         return data;
     },
-    createProject: async (payload, projectID) => {
+    createProject: async (payload) => {
         const { data } = await axios.post(
-            httpService + projectEndPoint + projectID, payload
+            httpService + projectEndPoint, payload
         );
+        return data;
+    },
+    delete: async (projectID) => {
+        const data = await axios.delete(
+            httpService + `project/${projectID}`
+        );
+        return data
     },
 };
 

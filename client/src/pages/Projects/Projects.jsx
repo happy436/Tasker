@@ -12,7 +12,7 @@ import ProjectModal from "./components/modals/ProjectModal";
 import { useProject } from "hook/useProject";
 
 function Projects() {
-	const { activeModal, onActiveModal } = useProject();
+	const { activeModalCreateProject, onActiveModalCreateProject } = useProject();
 	const dispatch = useDispatch();
 	const projects = useSelector(getProjects());
 	const isLoading = useSelector(getProjectsLoadingStatus());
@@ -27,7 +27,7 @@ function Projects() {
 		<main className="d-flex flex-column p-3 gap-3 px-5">
 			<h1>Projects</h1>
 			<div>
-				<Button onClick={() => onActiveModal()}>Add project</Button>
+				<Button onClick={() => onActiveModalCreateProject()}>Add project</Button>
 			</div>
 			<ListGroup
 				as="ul"
@@ -64,7 +64,7 @@ function Projects() {
 					  ))
 					: "Empty"}
 			</ListGroup>
-			{activeModal && <ProjectModal />}
+			{activeModalCreateProject && <ProjectModal />}
 		</main>
 	);
 }

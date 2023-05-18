@@ -16,7 +16,6 @@ function NavBar() {
     const location = useLocation()
 
     useEffect(() => {
-        console.log(location.pathname)
         setActive(location.pathname);
     }, [location]);
 

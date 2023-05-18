@@ -6,6 +6,7 @@ import {
 	createProject,
 	getProjectsLoadingStatus,
 	loadProjects,
+	removeProject
 } from "store/projects";
 
 const ProjectContext = React.createContext();
@@ -17,7 +18,8 @@ export const useProject = () => {
 const ProjectProvider = ({ children }) => {
 	const dispatch = useDispatch();
 	const isLoading = useSelector(getProjectsLoadingStatus());
-	const [activeModal, setActiveModal] = useState(false);
+	const [activeModalCreateProject, setActiveModalCreateProject] = useState(false);
+	const [activeModalRemoveProject, setActiveModalRemoveProject] = useState(false);
 	const [projectTitle, setProjectTitle] = useState("");
 	const [projectVisibility, setProjectVisibility] = useState();
 
@@ -33,14 +35,23 @@ const ProjectProvider = ({ children }) => {
 			visilibity: projectVisibility,
 		};
 		dispatch(createProject(data));
-        onActiveModal()
+        onActiveModalCreateProject()
         onChangeModalTitle("")
         handleChangeProjectVisibility("")
 	};
 
-	const onActiveModal = () => {
-		setActiveModal(!activeModal);
+	const handleRemoveProject = (projectID) => {
+		dispatch(removeProject(projectID))
+		onActiveModalRemoveProject()
+	}
+
+	const onActiveModalCreateProject = () => {
+		setActiveModalCreateProject(!activeModalCreateProject);
 	};
+
+	const onActiveModalRemoveProject = () => {
+		setActiveModalRemoveProject(!activeModalRemoveProject)
+	}
 
 	const onChangeModalTitle = (data) => {
 		setProjectTitle(data);
@@ -58,8 +69,11 @@ const ProjectProvider = ({ children }) => {
 				projectTitle,
 				projectVisibility,
 				handleChangeProjectVisibility,
-				activeModal,
-				onActiveModal,
+				activeModalCreateProject,
+				onActiveModalCreateProject,
+				onActiveModalRemoveProject,
+				activeModalRemoveProject,
+				handleRemoveProject
 			}}
 		>
 			{!isLoading && children}

@@ -23,15 +23,17 @@ function App() {
                     <Route path="/projects" component={Projects} />
                     <Route
                         path="/project/:projectID?/settings"
-                        components={ProjectSettings}
+                        component={ProjectSettings}
                     />
                     <TaskProvider>
                         <Route
                             path="/project/:projectID?/history"
-                            components={ProjectHistory}
+                            exact
+                            component={ProjectHistory}
                         />
                         <Route
                             path="/project/:projectID?/board"
+                            exact
                             component={Board}
                         />
                         <Route

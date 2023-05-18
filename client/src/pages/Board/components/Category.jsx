@@ -2,7 +2,8 @@ import React from "react";
 import { useTask } from "hook/useTask";
 import EditTaskModal from "./modals/EditTaskModal";
 import Task from "./Task";
-import ConfirmRemoveTaskModal from "./modals/ConfirmRemoveTaskModal";
+import ModalQuestion from "components/ui/common/ModalQuestion";
+import { useParams } from "react-router-dom";
 
 function Category() {
     const {
@@ -10,10 +11,12 @@ function Category() {
         handleChangeActiveCategory,
         activeCategoryIndex,
         onActiveModal,
+        activeEditModalTask,
+        activeConfirmRemoveTaskModal,
         handleShowConfirmRemoveTaskModal,
-        activeEditModalTask
+        handleConfirmRemoveTask,
     } = useTask();
-
+    const { projectID } = useParams();
     return (
         <>
             <div>
@@ -73,7 +76,16 @@ function Category() {
                     </ul>
                 </section>
             ) : null}
-            <ConfirmRemoveTaskModal/>
+            {activeConfirmRemoveTaskModal && (
+                <ModalQuestion
+                    active={activeConfirmRemoveTaskModal}
+                    hide={handleShowConfirmRemoveTaskModal}
+                    submit={() => handleConfirmRemoveTask(projectID)}
+                    title={"Confirm remove?"}
+                    body={"Do you really want to remove this task?"}
+                    titleButton={"Remove"}
+                />
+            )}
             {activeEditModalTask && <EditTaskModal />}
         </>
     );

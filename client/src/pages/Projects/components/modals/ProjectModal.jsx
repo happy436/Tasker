@@ -11,9 +11,6 @@ function ProjectModal() {
 		onChangeModalTitle,
 		projectTitle,
 		handleChangeProjectVisibility,
-		/* 
-		projectVisibility,
-		, */
 	} = useProject();
 
 	const radioComponent = (arr) => {
@@ -69,20 +66,6 @@ function ProjectModal() {
 						<b>Project visibility</b>
 					</Form.Label>
 					{radioComponent(array)}
-					{/* <Form.Check type="radio">
-						<Form.Check.Input type="radio" name="group1" />
-						<Form.Check.Label className="d-flex gap-1">
-							<UilBookAlt />
-							Public
-						</Form.Check.Label>
-					</Form.Check>
-					<Form.Check type="radio">
-						<Form.Check.Input type="radio" name="group1" />
-						<Form.Check.Label className="d-flex gap-1">
-							<UilPadlock />
-							Privat
-						</Form.Check.Label>
-					</Form.Check> */}
 				</Form.Group>
 			</Modal.Body>
 			<Modal.Footer>
