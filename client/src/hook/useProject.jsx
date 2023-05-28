@@ -32,7 +32,7 @@ const ProjectProvider = ({ children }) => {
 			projectID: nanoid(),
 			team: [],
 			history: [],
-			visilibity: projectVisibility,
+			visibility: projectVisibility,
 		};
 		dispatch(createProject(data));
         onActiveModalCreateProject()

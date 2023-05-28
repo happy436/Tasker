@@ -5,6 +5,7 @@ import { Link, useParams } from "react-router-dom";
 import CardContainer from "components/ui/common/CardContainer";
 import { getProjectByID } from "store/projects";
 import ProjectHistory from "pages/ProjectHistory";
+import ProjectTeam from "pages/ProjectTeam";
 
 function Project() {
     const { projectID } = useParams();
@@ -19,20 +20,20 @@ function Project() {
     const cardsList = [
         {
             title: "Team",
-            body: "bla-bla",
+            body: <ProjectTeam />,
             link: `${baseURL}/team`,
             styles: {},
         },
         {
             title: "History",
-            body: <ProjectHistory/>,
+            body: <ProjectHistory />,
             link: `${baseURL}/history`,
             styles: {},
         },
     ];
     return (
         <main className="d-flex flex-column p-3 gap-3">
-            <h1>Project: {project.name}</h1>
+            <h1>{project.name}</h1>
             <nav>
                 <ButtonGroup className="gap-3" as="ul">
                     {list.map((item) => (

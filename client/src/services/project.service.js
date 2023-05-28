@@ -10,7 +10,6 @@ const projectEndPoint = "project/";
 const projectService = {
     getProjects: async () => {
         const { data } = await axios.get(httpService + projectsEndPoint);
-        
         return data;
     },
     createProject: async (payload) => {

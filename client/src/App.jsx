@@ -12,6 +12,7 @@ import Settings from "./pages/Settings";
 import ProjectProvider from "./hook/useProject";
 import ProjectSettings from "./pages/ProjectSettings";
 import ProjectHistory from "./pages/ProjectHistory";
+import ProjectTeam from "pages/ProjectTeam";
 
 function App() {
     return (
@@ -26,6 +27,11 @@ function App() {
                         component={ProjectSettings}
                     />
                     <TaskProvider>
+                    <Route
+                            path="/project/:projectID?"
+                            exact
+                            component={Project}
+                        />
                         <Route
                             path="/project/:projectID?/history"
                             exact
@@ -37,9 +43,9 @@ function App() {
                             component={Board}
                         />
                         <Route
-                            path="/project/:projectID?"
+                            path="/project/:projectID?/team"
                             exact
-                            component={Project}
+                            component={ProjectTeam}
                         />
                         <Route path="/" exact component={Main} />
                         <Redirect to="/" />
