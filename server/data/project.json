@@ -5,7 +5,8 @@
     "team": [
       "qweadwadqwe"
     ],
-    "history": []
+    "history": [],
+    "visibility": "Public"
   },
   {
     "name": "Pizza app",
@@ -13,6 +14,23 @@
     "team": [
       "qweadwadqwe"
     ],
-    "history": []
+    "history": [],
+    "visibility": "Public"
+  },
+  {
+    "name": "Aba app",
+    "projectID": "awdlnaawdadwdkqweqwejh12313",
+    "team": [
+      "qweadwadqwe"
+    ],
+    "history": [],
+    "visibility": "Privat"
+  },
+  {
+    "name": "qweqweqe",
+    "projectID": "zwAoPWE4InwiOvq2NaUQ3",
+    "team": [],
+    "history": [],
+    "visibility": "Privat"
   }
 ]
